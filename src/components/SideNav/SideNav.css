@@ -1,0 +1,32 @@
+.sidenav-container {
+  height: auto;
+  width: 15vw;
+  color: #6a7685;
+  transition: width 0.1s ease-in-out;
+  overflow: hidden;
+}
+
+.sidenav-heading {
+  font-weight: 500;
+  padding-left: 2.5vw;
+}
+
+.topic {
+  width: 90%;
+  cursor: pointer;
+  margin-left: 1.5vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+  border-radius: 10px;
+}
+
+.topic.selected {
+  color: #207937;
+  font-weight: 500;
+}
+
+.topic:hover {
+  background-color: #ebeff0;
+}

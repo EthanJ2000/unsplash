@@ -1,0 +1,28 @@
+.gallery-container {
+  width: 80vw;
+  display: inline-flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding-right: 15%;
+}
+
+.topic-image {
+  margin-right: 2.5%;
+  cursor: pointer;
+}
+
+.gallery-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: fit-content;
+  margin: 2%;
+}
+
+.spinner {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}

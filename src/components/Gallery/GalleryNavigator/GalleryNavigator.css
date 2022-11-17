@@ -1,0 +1,36 @@
+.gallery-navigator-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.right-paddle {
+  background-color: #f2f2f2;
+  height: 100vh;
+  width: 30px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.left-paddle {
+  background-color: #f2f2f2;
+  height: 100vh;
+  width: 30px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  cursor: pointer;
+  display: none;
+}
