@@ -10,8 +10,8 @@ interface GalleryProps {
   children: JSX.Element;
 }
 const GalleryNavigator = ({ children }: GalleryProps) => {
-  const DISTANCE = 150;
-  const SPEED = 10;
+  const DISTANCE = 280;
+  const SPEED = 5;
   const STEPS = 10;
   const selectedImage = useAppSelector((state) => state.dashboard.selectedImage);
   const leftPaddle = document.getElementById("left-paddle");
@@ -32,9 +32,11 @@ const GalleryNavigator = ({ children }: GalleryProps) => {
   const scroll = (direction: string, speed: number, distance: number, step: number) => {
     const gallery = document.getElementById("gallery");
     const sideNav = document.getElementById("side-nav");
+    var distanceToRight = document.getElementById("gallery")?.getBoundingClientRect().right;
+
     if (gallery) {
       let scrollAmount = 0;
-      const slideTimer = setInterval(function () {
+      const slideTimer = window.setInterval(function () {
         if (direction == "left") {
           gallery.scrollLeft -= step;
         } else {
@@ -46,13 +48,14 @@ const GalleryNavigator = ({ children }: GalleryProps) => {
             leftPaddle.style.display = "none";
             sideNav.style.width = "15vw";
             gallery.style.width = "80vw";
-          } else {
+            sideNav.style.overflow = "visible";
+          } else if (distanceToRight && distanceToRight < 2000) {
             leftPaddle.style.display = "flex";
             sideNav.style.width = "0vw";
-            gallery.style.width = "auto";
+            sideNav.style.overflow = "hidden";
+            gallery.style.width = "90vw";
           }
         }
-        console.log(scrollAmount, gallery.scrollLeft, gallery.offsetWidth);
         if (scrollAmount >= distance) {
           window.clearInterval(slideTimer);
         }

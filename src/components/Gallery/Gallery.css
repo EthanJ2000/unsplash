@@ -26,3 +26,24 @@
   left: 50%;
   transform: translate(-50%, 0);
 }
+
+@media screen and (max-width: 480px) {
+  .spinner {
+    position: fixed;
+    transform: none;
+    top: 0;
+    margin-top: 50vh;
+    height: 5% !important;
+    width: 5% !important;
+  }
+  .gallery-container {
+    padding: 0;
+    width: 100vw;
+  }
+  .gallery-row {
+    flex-direction: column;
+  }
+  .topic-image {
+    margin-bottom: 5%;
+  }
+}

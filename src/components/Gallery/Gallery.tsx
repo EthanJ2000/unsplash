@@ -19,7 +19,7 @@ const Gallery = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    selectedTopic && images.length === 0 && getData();
+    getData();
   }, [selectedTopic]);
 
   const getData = async () => {
@@ -29,11 +29,11 @@ const Gallery = () => {
     setImages(data);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
   };
 
   const renderImages = (startIndex: number, endIndex: number) => {
-    if (images && images.length > 0) {
+    if (images && images?.length > 0) {
       return images
         .slice(startIndex, endIndex)
         .map((image: TopicPhoto) => (
@@ -58,8 +58,12 @@ const Gallery = () => {
           {loading && (
             <ReactLoading className="spinner" type="spin" color="#207937" height="3%" width="3%" />
           )}
-          <div className="gallery-row">{renderImages(0, Math.ceil(images.length / 2))}</div>
-          <div className="gallery-row">{renderImages(images.length / 2, images.length)}</div>
+          {images && images.length > 0 ? (
+            <>
+              <div className="gallery-row">{renderImages(0, Math.ceil(images?.length / 2))}</div>
+              <div className="gallery-row">{renderImages(images.length / 2, images?.length)}</div>
+            </>
+          ) : null}
         </div>
       </GalleryNavigator>
     </>

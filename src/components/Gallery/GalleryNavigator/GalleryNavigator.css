@@ -34,3 +34,12 @@
   cursor: pointer;
   display: none;
 }
+
+@media screen and (max-width: 480px) {
+  .left-paddle {
+    display: none;
+  }
+  .right-paddle {
+    display: none;
+  }
+}

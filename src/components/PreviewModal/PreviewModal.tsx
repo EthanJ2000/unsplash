@@ -1,14 +1,13 @@
 import "./PreviewModal.css";
 
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
-import { faClose, faDownload, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faClose, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TopicPhoto from "../../models/TopicPhoto";
 import { getPhoto } from "../../api/UnsplashRequests";
-import { setSelectedImage } from "../../store/dashboard/dashboardActions";
 import { useParams } from "react-router";
 
 const PreviewModal = () => {
@@ -18,13 +17,12 @@ const PreviewModal = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    console.log(id);
     id && getSelectedImage();
   }, [id]);
 
   const getSelectedImage = async () => {
     const data = await getPhoto(id!);
-    console.log(data);
+
     if (data) setSelectedImage(data);
   };
   return (
@@ -40,9 +38,16 @@ const PreviewModal = () => {
           {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
             <>
               <div className="tools">
-                <button onClick={() => zoomIn()}>+</button>
-                <button onClick={() => zoomOut()}>-</button>
-                <button onClick={() => resetTransform()}>Reset</button>
+                <div onClick={() => zoomIn()}>
+                  {" "}
+                  <FontAwesomeIcon color="white" icon={faPlus} />
+                </div>
+                <div onClick={() => zoomOut()}>
+                  <FontAwesomeIcon color="white" icon={faMinus} />
+                </div>
+                <div style={{ width: "90px" }} onClick={() => resetTransform()}>
+                  Reset
+                </div>
               </div>
               <TransformComponent>
                 <img src={selectedImage?.links.download} alt={selectedImage?.links.download} />

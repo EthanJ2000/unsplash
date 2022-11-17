@@ -3,7 +3,9 @@ import "./SideNav.css";
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { useEffect, useState } from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Topic from "../../models/Topic";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { getTopics } from "../../api/UnsplashRequests";
 import { setSelectedTopic } from "../../store/dashboard/dashboardActions";
 
@@ -15,6 +17,10 @@ const SideNav = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    onCloseClicked();
+  }, [selectedTopic]);
 
   const getData = async () => {
     setTopics([]);
@@ -39,8 +45,22 @@ const SideNav = () => {
     }
   };
 
+  const onCloseClicked = () => {
+    const sideNav = document.getElementById("side-nav");
+    if (sideNav && window.innerWidth <= 480) {
+      sideNav.style.width = "0vw";
+      sideNav.style.overflow = "hidden";
+    }
+  };
+
   return (
     <div id="side-nav" className="sidenav-container">
+      <FontAwesomeIcon
+        className="side-nav-close-button"
+        color="#207937"
+        icon={faClose}
+        onClick={onCloseClicked}
+      />
       <p className="sidenav-heading">Explore</p>
       {renderTopics()}
     </div>
