@@ -22,7 +22,6 @@ const PreviewModal = () => {
 
   const getSelectedImage = async () => {
     const data = await getPhoto(id!);
-
     if (data) setSelectedImage(data);
   };
   return (

@@ -26,6 +26,12 @@
   left: 50%;
   transform: translate(-50%, 0);
 }
+.nothing {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 12vh);
+  color: gray;
+}
 
 @media screen and (max-width: 480px) {
   .spinner {

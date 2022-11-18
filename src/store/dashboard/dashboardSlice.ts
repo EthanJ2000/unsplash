@@ -19,9 +19,6 @@ const authSlice = createSlice({
     setSelectedTopic(state, action: PayloadAction<string>) {
       state.selectedTopic = action.payload;
     },
-    setSelectedImage(state, action: PayloadAction<TopicPhoto | null>) {
-      state.selectedImage = action.payload;
-    },
   },
 });
 export default authSlice;

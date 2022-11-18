@@ -53,7 +53,11 @@ const GalleryNavigator = ({ children }: GalleryProps) => {
             leftPaddle.style.display = "flex";
             sideNav.style.width = "0vw";
             sideNav.style.overflow = "hidden";
-            gallery.style.width = "90vw";
+            if (window.innerWidth < 1400) {
+              gallery.style.width = "90vw";
+            } else {
+              gallery.style.width = "95vw";
+            }
           }
         }
         if (scrollAmount >= distance) {

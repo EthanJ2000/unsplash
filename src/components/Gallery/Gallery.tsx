@@ -9,7 +9,6 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import ReactLoading from "react-loading";
 import TopicPhoto from "../../models/TopicPhoto";
 import { getTopicPhotos } from "../../api/UnsplashRequests";
-import { setSelectedImage } from "../../store/dashboard/dashboardActions";
 import { useNavigate } from "react-router-dom";
 
 const Gallery = () => {
@@ -63,6 +62,8 @@ const Gallery = () => {
               <div className="gallery-row">{renderImages(0, Math.ceil(images?.length / 2))}</div>
               <div className="gallery-row">{renderImages(images.length / 2, images?.length)}</div>
             </>
+          ) : !loading ? (
+            <p className="nothing">Nothing to see here</p>
           ) : null}
         </div>
       </GalleryNavigator>
